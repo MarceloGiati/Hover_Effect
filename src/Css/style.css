@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    background: #808080;
+    justify-content: center;
+    align-items: center;
+    min-height: 40rem;
+}
+
+.container3D {
+    position: relative;
+    top: -80px;
+    transform: skewY(-20deg);
+    /*Descomentaro"animationeo@Keyframaparaativaaraanimaçãodecores*/
+    /* animation: animate 5s linear infinite;
+    -webkit-animation: animati 5s linear infinite; */
+}
+
+/* Animação das cores tipo carrocel */
+/* @keyframe animate { 
+    
+    0% {
+        filter: hue-rotate(0deg);
+        -webkit-filter: hue-rotate(0deg);
+    }
+    100% {
+        filter: hue-rotate(360deg);
+        -webkit-filter: hue-rotate(360deg);
+    }
+} */
+
+.container3D .cube {
+    position: relative;
+    z-index: 2;
+}
+
+.container3D .cube:nth-child(2) {
+    z-index: 1;
+    translate: -60px -60px;
+}
+
+.container3D .cube:nth-child(3) {
+    z-index: 3;
+    translate: 60px 60px;
+}
+
+.container3D .cube div {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    gap: 30px;
+    translate: calc(-70px * var(--x)) calc(-60px * var(--y));
+}
+
+.container3D .cube div span {
+    display: inline-block;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    background: #dcdcdc;
+    z-index: calc(1 * var(--i));
+    transition: 1.5s;
+}
+
+.container3D .cube div span:hover {
+    background: #ef4149;
+    transition: 0s;
+    filter: drop-shadow(0 0 30px #ef4149);
+}
+
+.container3D .cube div span::before {
+    content: '';
+    position: absolute;
+    left: -40px;
+    width: 40px;
+    height: 100%;
+    background: #fff;
+    transform-origin: right;
+    transform: skewY(45deg);
+    transition: 1.5s;
+    -webkit-transform: skewY(45deg);
+    -moz-transform: skewY(45deg);
+    -ms-transform: skewY(45deg);
+    -o-transform: skewY(45deg);
+}
+
+.container3D .cube div span:hover::before {
+    transition: 0s;
+    background: #f75d64;
+}
+
+.container3D .cube div span::after {
+    content: '';
+    position: absolute;
+    top: -40px;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background: #f2f2f2;
+    transform-origin: bottom;
+    transform: skewx(45deg);
+    transition: 1.5s;
+    -webkit-transform: skewx(45deg);
+    -moz-transform: skewx(45deg);
+    -ms-transform: skewx(45deg);
+    -o-transform: skewx(45deg);
+}
+
+.container3D .cube div span:hover::after {
+    transition: 0s;
+    background: #f14e55;
+}
